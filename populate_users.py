@@ -1,17 +1,20 @@
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','ProFour.settings')
 
+
 import django
 django.setup()
 
+#FAKE POP SCRIPT FOR DUMMY DATA
 from Four_App.models import User
-from faker import Faker
+from faker import Faker # command pip install Faker...use fakegen documentation
 
 fakegen = Faker()
 
 def populate(N=5):
     for entry in range(N):
 
+        #create dummy data for the entry
         fake_name = fakegen.name().split()
         fake_first_name = fake_name[0]
         fake_last_name = fake_name[1]
