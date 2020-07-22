@@ -1,6 +1,12 @@
 from django import forms
 from django.core import validators
+from Four_App.models import User
 
+#Creating a model form
+class NewUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 #example of individual validator
 # def check_for_z(value):
@@ -8,7 +14,7 @@ from django.core import validators
 #         raise forms.ValidationError('Name needs to start with Z')
 
 class Form_Name(forms.Form):
-    # name = forms.CharField(validators=[check_for_z])
+    # name = forms.CharField(validators=[check_for_z]) <use this for individual validation
 
     name = forms.CharField()
     description = forms.CharField()
@@ -18,6 +24,15 @@ class Form_Name(forms.Form):
                                 widget=forms.HiddenInput,
                                 validators=[validators.MaxLengthValidator(0)])
 
+                                #botcatcher example...import validators replace this method
+                                # def clean_botcatcher(self):
+                                #     botcatcher = self.cleaned_data['botcatcher']
+                                #
+                                #     if len(botcatcher) > 0:
+                                #         raise  forms.ValidationError('GOTCHA BOT!')
+                                #     return botcatcher
+
+#this validator works for the full form and not one individual field                                 
 def clean(self):
     all_clean_data = super().clean()
     desc = all_clean_data['description']
@@ -25,11 +40,3 @@ def clean(self):
 
     if desc != vdesc:
         raise forms.ValidationError('description should match')
-
-    #botcatcher example...import validators replace this method
-    # def clean_botcatcher(self):
-    #     botcatcher = self.cleaned_data['botcatcher']
-    #
-    #     if len(botcatcher) > 0:
-    #         raise  forms.ValidationError('GOTCHA BOT!')
-    #     return botcatcher
