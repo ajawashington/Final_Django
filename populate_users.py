@@ -4,6 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE','ProFour.settings')
 import django
 django.setup()
 
+#FAKE POP SCRIPT FOR DUMMY DATA
 from Four_App.models import User
 from faker import Faker
 
