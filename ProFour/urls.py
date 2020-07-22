@@ -20,7 +20,6 @@ from Four_App import forms
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('formpage/', views.form_name_view, name='form_name'),
     path('admin/', admin.site.urls),
-    path('users/', include('Four_App.urls')),
+    path('Four_App/', include('Four_App.urls')),
 ]

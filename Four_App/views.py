@@ -4,12 +4,12 @@ from Four_App import forms
 
 # Create your views here.
 
+
 def index(request):
     return render(request, 'Four_App/index.html')
 
 # it is not possible to render two views to the same url
 #so we compressed the getAll() and the  post for new users into one view
-
 
 #MODEL FORM!
 #this var will be used to pass through urls.py
@@ -52,3 +52,11 @@ def form_name_view(request):
             print('Text:' +form.cleaned_data['text'])
 
     return render(request, 'Four_App/form_page.html', {'form': form})
+
+
+
+def other(request):
+    return render(request, 'Four_App/other.html')
+
+def relative(request):
+    return render(request, 'Four_App/relative_url_templates.html')
