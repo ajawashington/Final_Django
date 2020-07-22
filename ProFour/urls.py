@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Four_App import views
+from Four_App import forms
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('formpage/', views.form_name_view, name='form_name'),
     path('admin/', admin.site.urls),
-    path('users/', include('Four_App.urls'))
+    path('users/', include('Four_App.urls')),
 ]

@@ -5,11 +5,31 @@
     <title>Users</title>
   </head>
   <body>
-    <h1>Here are your Users for FourApp:</h1>
-    {% if users %}
 
+<div class="container">
+<div class="jumbotron">
+  <h1>Register to be User here!</h1>
+  <form method="POST">
+    <!-- template tag for new user form -->
+    {{ form.as_p }}
+
+    <!-- must include this token to avoid forbidden key error  -->
+    {% csrf_token %}
+
+    <input type="Submit" class="btn btn-primary" value="Submit">
+  </form>
+
+</div>
+</div>
+
+<div class="users">
+    <h2>Here are your Users for FourApp:</h2>
+
+    <!-- template tag for user list getAll() -->
+
+    {% if user_list %}
       <ol>
-        {% for person in users %}
+        {% for person in user_list %}
         <li>User Info</li>
           <ul>
             <li>First Name: {{person.first_name}}</li>
@@ -20,5 +40,7 @@
       </ol>
 
     {% endif %}
+  </div>
+
   </body>
 </html>
