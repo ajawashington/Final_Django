@@ -5,14 +5,22 @@ from Four_App.forms import UserForm, UserProfileInfoForm
 #
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
-from django.contrib.auth.decortors import login_required
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def index(request):
     return render (request, 'Four_App/index.html')
 
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+@login_required
+def special(request):
+    return HttpResponse('You are logged in!')
 
 def register(request):
 
@@ -50,7 +58,24 @@ def register(request):
 
 def user_login(request):
     if request.method == 'POST':
-        username = request 
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username,password=password)
+
+        if user:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect(reverse('index'))
+
+            else:
+                return HttpResponse('Account Not Active')
+        else:
+            print("Someone logged in and failed!")
+            print("Username: {} and password: {}".format(username,password))
+            return HttpResponse("Invalid Login Details")
+    else:
+        return render(request, 'Four_App/login.html',{})
 
 
 

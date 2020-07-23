@@ -20,7 +20,9 @@ from Four_App import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('Four_App/', include('Four_App.urls'))
+    path('Four_App/', include('Four_App.urls')),
+    path('logout/',views.user_logout,name='logout'),
+    path('special/',views.special,name='special')
 
     # path('Four_App/', include('Four_App.urls')),
 ]
