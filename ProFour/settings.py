@@ -9,12 +9,19 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+#COMMANDS TO SET UP PROJECT
+# ACTIVATE ENVIRONMENT
+#CREATE DIRECTORY
+#DJANJO-ADMIN STARTPROJECT projectname
+#DJANGO-ADMIN STARTAPP appname
 
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates') #You must add a new path to any new directory (templates,static files,imgs,etc)
+STATIC_DIR = os.path.join(BASE_DIR,'static') #static dir for admin
+MEDIA_DIR = os.path.join(BASE_DIR,'media') #media dir for users static files
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -29,6 +36,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,7 +63,7 @@ ROOT_URLCONF = 'ProFour.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,],
+        'DIRS': [TEMPLATE_DIR,], #be sure to add new template directories
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,12 +93,26 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
+#PASSWORD HASH
+#Must install libraries for user auth #commands: pip install bcrypt; pip install django [argon2]
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+]
+
+
 AUTH_PASSWORD_VALIDATORS = [
+
+    #user name must be separate from password
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {'min_length':8}
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -119,3 +141,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#STATIC IMPORT
+STATICFILES_DIRS = [STATIC_DIR,]
+
+#MEDIA IMPORT
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
+#LOGIN IMPORT
+LOGIN_URL = '/Four_App/user_login'

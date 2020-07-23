@@ -16,10 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Four_App import views
-from Four_App import forms
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('Four_App/', include('Four_App.urls')),
-]
+    path('Four_App/', include('Four_App.urls', namespace="Four_App")),
+    path('', views.IndexView.as_view()), #template cbv
+    ]
+
+
+
+    #PATH EXAMPLES
+    # path('', views.index, name='index'), Class Based View
+    # path('',views.CBView.as_view()), #grabbing the class and showing it as a view
+    # path('Four_App/', include('Four_App.urls')),
+    # path('logout/',views.user_logout,name='logout'),
+    # path('special/',views.special,name='special')
+    # path('Four_App/', include('Four_App.urls')),

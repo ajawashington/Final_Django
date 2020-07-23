@@ -1,0 +1,20 @@
+{% extends 'Four_App/base.html' %}
+  {% block body_block %}
+
+<div class="jumbotron">
+  <h1>SCHOOL FORM</h1>
+  {% if not form.instance.pk %}
+  Create School
+  {% else %}
+  Update School
+  {% endif %}
+</div>
+
+<form method="post">
+  {% csrf_token %}
+
+  {{ form.as_p }}
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+
+{% endblock %}

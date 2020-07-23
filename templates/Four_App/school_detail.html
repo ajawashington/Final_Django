@@ -1,0 +1,27 @@
+{% extends 'Four_App/base.html'%}
+  {% block body_block %}
+    <h1>Welcome to School Details!</h1>
+<div class="jumbotron">
+
+    <ol>
+      <h2>
+        <li>Name: {{school_detail.name}}</li>
+        <li>Principal: {{school_detail.principal_name}}</li>
+        <li>Location: {{school_detail.location}}</li>
+        <h3>Students: </h3>
+        {% for student in school_detail.students.all %}
+        <li><p>{{student.name}} who is {{student.age}}</p></li>
+        {% endfor %}
+      </h2>
+    </ol>
+  </div>
+
+  <div class="container">
+    <p>
+<a href="{% url 'Four_App:update' pk=school_detail.pk %}">Update</a>
+<a href="{% url 'Four_App:delete' pk=school_detail.pk %}">Delete</a>
+
+    </p>
+
+  </div>
+  {% endblock %}
