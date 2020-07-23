@@ -13,18 +13,12 @@ urlpatterns = [
     path('delete/<int:pk>/', views.SchoolDeleteView.as_view(),name='delete'),
 ]
 
-
-
-
-
-
-
 #EXAMPLE OF URL PATTERNS
 # urlpatterns = [
 #     path('users/', views.users,name='users'),
 #     path('other/', views.other,name='other'),
 #     path('relative/', views.relative,name='relative_url_templates'),
-# path('register/', views.register, name='register'),
-# path('user_login/',views.user_login,name="user_login"),
-# path('school_detail/',views.SchoolDetailView.as_view(),name="detail"),
+#     path('register/', views.register, name='register'),
+#     path('user_login/',views.user_login,name="user_login"),
+#     path('school_detail/',views.SchoolDetailView.as_view(),name="detail"),
 # ]

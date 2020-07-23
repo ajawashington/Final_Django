@@ -24,23 +24,6 @@ class Student(models.Model):
         return self.name
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #MODEL BULDING EXAMPLES
 
 #After you create models register them in admin.py

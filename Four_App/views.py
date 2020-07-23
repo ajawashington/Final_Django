@@ -39,14 +39,6 @@ class SchoolDeleteView(DeleteView):
     model = models.School
     success_url = reverse_lazy("Four_App:list")
 
-
-
-
-
-
-
-
-
 #CBV Imports
 # from django.views.generic import View, TemplateView
 # from django.http import HttpResponseRedirect, HttpResponse

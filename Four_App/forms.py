@@ -1,16 +1,7 @@
-from django import forms
-from django.core import validators
-from django.contrib.auth.models import User
+# from django import forms
+# from django.core import validators
+# from django.contrib.auth.models import User
 # from Four_App.models import UserProfileInfo
-
-
-
-
-
-
-
-
-
 
 #MODEL FORM EXAMPLES
 # class UserForm(forms.ModelForm):
@@ -24,20 +15,6 @@ from django.contrib.auth.models import User
 #     class Meta:
 #         model = UserProfileInfo
 #         fields = ('portfolio_site', 'profile_pic')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #BASIC MODEL FORMS
 
