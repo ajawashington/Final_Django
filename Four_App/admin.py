@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Four_App.models import User
+from Four_App.models import UserProfileInfo
 
 # Register your models here.
-admin.site.register(User)
+admin.site.register(UserProfileInfo)
