@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 #COMMANDS TO SET UP PROJECT
-# ACTIVATE ENVIRONMENT
+# ACTIVATE ENVIRONMENT activate (env name)
 #CREATE DIRECTORY
 #DJANJO-ADMIN STARTPROJECT projectname
 #DJANGO-ADMIN STARTAPP appname
